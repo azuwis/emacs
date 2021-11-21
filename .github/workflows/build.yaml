@@ -63,7 +63,7 @@ jobs:
 
     - name: Show derivation information
       run: |
-        nix show-derivation ".#emacs" > emacs.drv
+        nix show-derivation ".#packages.aarch64-darwin.emacs" > emacs.drv
         echo -e "\n\e[4mflake.lock\e[0m\n"
         cat ./flake.lock
         echo -e "\n\e[4mDerivation\e[0m\n"
@@ -75,7 +75,7 @@ jobs:
         path: ./emacs.drv
         key: emacs-drv-${{ hashFiles('emacs.drv') }}
 
-    - run: nix build -L .#emacs
+    - run: nix build -L .#packages.aarch64-darwin.emacs
       if: steps.cache-drv.outputs.cache-hit != 'true'
 
     - run: rm -f emacs.drv
