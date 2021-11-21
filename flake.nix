@@ -62,7 +62,7 @@
             '';
           };
 
-          emacs = (emacs.override { srcRepo = true; nativeComp = true; withXwidgets = true; }).overrideAttrs (
+          emacs = (emacs.override { srcRepo = true; nativeComp = false; withXwidgets = true; }).overrideAttrs (
             o: rec {
 version = "29.0.50";
               src = emacs-src;
